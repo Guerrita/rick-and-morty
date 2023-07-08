@@ -1,15 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import ItemList from "@/containers/ItemList";
 import banner from "@/assets/banner.png";
 import {Character} from "@/components/CharacterCard";
 import axios from "axios";
 
+import GetData from "@/hook/GetData";
+import { APIContext } from "@/Context";
 
 
 const Characters = () => {
+  const context = useContext(APIContext)
+
   const [pageNumber, setPageNumber] = useState(1);  
   const [characters, setCharacters] = useState([])
   const [info, setInfo] = useState({})
+
+
   
   // let allItems = useGetItems(api)
   // let { info, results } = allItems;

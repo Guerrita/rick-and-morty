@@ -1,5 +1,4 @@
 import React from "react";
-import "@/styles/NotFound.css";
 import portal from "@/assets/portal.png";
 
 const NotFound = () => {

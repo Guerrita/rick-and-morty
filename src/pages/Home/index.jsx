@@ -1,36 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import banner from "@/assets/home-banner.png";
 
 import ItemList from "@/containers/ItemList";
 import { Character } from "@/components/CharacterCard";
-import axios from "axios";
+import GetData from "@/hook/GetData";
+
 
 const Home = () => {
 
-  const [pageNumber, setPageNumber] = useState(1);
   const [characters, setCharacters] = useState([])
   const [info, setInfo] = useState({})
-
-  // let allItems = useGetItems(api)
-  // let { info, results } = allItems;
+  let allData = GetData()
 
   useEffect(() => {
-    let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(api)
-        if (response.status === 200) {
-          setCharacters(response.data.results);
-          setInfo(response.data.info);
-        }
-
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-
-  }, [pageNumber])
+    setInfo(allData?.info)
+    setCharacters(allData?.results)
+  }, [allData])
 
   return (
     <React.Fragment>
