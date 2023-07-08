@@ -1,69 +1,204 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+	--white: #FFFFFF;
+	--black: #282c34;
+  --morty-blue:#00b1c8;
+  --green-rick: #8bcf21;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+*{
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
+}
+
+
+html{ 
+	margin: 0;
+  font-size: 62.5%;
+	font-family: 'Creepster', 'cursive';
+}
+
+
+.banner {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.banner img {
+  width: 100%;
+  height: auto;
+  margin: auto;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 24px;
+	border-bottom: 2px solid var(--green-rick);
+	position: sticky;
+	top: 0;
+	background-color: var(--black);
+	height: 70px;
+  z-index: 2;
+}
+
+nav>a{
+	display: flex;
+	align-items: center;
+}
+
+.logo-mini{
+	display: none;
+}
+
+.logo{
+  width: 200px;
+	height: 60px;
+}
+
+.navbar-right{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	height: 100%;
+  justify-content:space-around;
+  min-width: 300px;
+}
+
+.navbar-right li:hover{
+	transform: scale(1.2);
+	transition: transform 330ms ease-in-out;
+}
+
+.navbar-right li{
+	height: 80%;
+	display: flex;
+	align-items: center;
+	margin: 0 10px;
+}
+
+.navbar-right li a{
+	font-size: 2.4rem;
+  text-decoration: none;
+  color: var(--morty-blue);
+	margin: 0 20px;
+	
+
+}
+
+@media (max-width: 767px) {
+	.navbar-right{
+		display: none;
+	}
+	.logo{
+		display: none;
+	}
+
+	.logo-mini{
+		display: block;
+		height: 60px;
+	}
+
+}
+
+.characters-banner{
+  margin-bottom: -3px;
+  height: auto;
+  width: 100%;
+}
+
+.character--card {
+  width: 280px;
+  height: 540px;
+  background-color: var(--black);
+  border-radius: 15px;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.character--image img {
+  width: 280px;
+  height: auto;
+  border-radius: 15px 15px 0 0;
+}
+
+.character--information {
+  padding: 20px 30px;
+  height: 260px;
+  position: relative;
+}
+
+.character--name {
+  font-size: 2.4rem;
+  color: var(--morty-blue);
+}
+
+.character--status {
+  font-size: 1.4rem;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.character--status-alive {
+  background-color: var(--green-rick);
+}
+
+.character--status-dead {
+  background-color: red;
+}
+
+.character--status-unknown {
+  background-color: white;
+}
+
+.line {
+  height: 1px;
+  background: white;
+  margin: 15px 0;
+}
+
+.character-detail--information {
+  width: 100%;
+  gap: 20px;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.character--last-location{
+  font-size: 1.4rem;
+  margin-top: 10px;
+  color: var(--green-rick);
+}
+
+.character--portal{
+  position: absolute;
+  width: 50px;
+  right: 20px;
+  bottom: 10px;
+
+  animation-name:rotate;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.character--portal:hover{
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@keyframes rotate{
+
+  100%{
+    transform:rotate(360deg);
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+}
+
+
+@media (max-width: 320px) {
+  .character--card {
+    max-width: 300px;
+    flex-direction: column;
   }
 }
